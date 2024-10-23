@@ -2,19 +2,19 @@ package com.Librarium.Demo.Servicios;
 
 
 import com.Librarium.Demo.Entidad.Libro;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 public interface ServicioLibro {
 
 
-    public Libro guardarLibro(Libro libro);
-    public Libro actualizarLibro(Libro libro);
-    public List<Libro> listarLibros();
-    public Optional<Libro> buscarLibroPorId(Long id);
-    public void eliminarLibro(Long id);
-
-
-
+    Libro saveLibro(Libro libro, MultipartFile file) throws IOException;
+    Libro updateLibro(Libro libro);
+    List<Libro> getLibros();
+    Optional<Libro> getLibroById(Long id);
+    void deleteLibro(Libro libro) throws IOException;
+    Libro updateLibroImagen(MultipartFile file, Libro libro) throws IOException;
 }

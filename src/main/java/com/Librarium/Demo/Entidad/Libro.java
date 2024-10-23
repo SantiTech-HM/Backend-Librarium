@@ -1,9 +1,6 @@
 package com.Librarium.Demo.Entidad;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -12,7 +9,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Libro {
 
@@ -36,4 +32,7 @@ public class Libro {
     @NotNull
     private Double precio;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "imagen_id", referencedColumnName = "id")
+    private Imagen imagen;
 }
