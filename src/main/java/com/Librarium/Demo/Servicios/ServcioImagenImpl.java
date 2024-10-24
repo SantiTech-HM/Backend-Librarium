@@ -8,13 +8,15 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.Map;
 
+
 @Service
-public class ServicioImagenImpl implements ServicioImagen {
+
+public class ServcioImagenImpl implements ServicioImagen{
 
     private final CloudinaryServicio cloudinaryServicio;
     private final RepositorioImagen repositorioImagen;
 
-    public ServicioImagenImpl(CloudinaryServicio cloudinaryServicio, RepositorioImagen  repositorioImagen) {
+    public ServcioImagenImpl(CloudinaryServicio cloudinaryServicio, RepositorioImagen repositorioImagen) {
         this.cloudinaryServicio = cloudinaryServicio;
         this.repositorioImagen = repositorioImagen;
     }
@@ -29,8 +31,9 @@ public class ServicioImagenImpl implements ServicioImagen {
     }
 
     @Override
-    public void deleteImagen(Imagen image) throws IOException {
-        cloudinaryServicio.delete(image.getImageId());
-        repositorioImagen.deleteById(image.getId());
+    public void deleteImagen(Imagen imagen) throws IOException {
+        cloudinaryServicio.delete(imagen.getImagenId());
+        repositorioImagen.deleteById(imagen.getId());
     }
+
 }

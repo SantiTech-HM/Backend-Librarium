@@ -14,18 +14,18 @@ import java.util.Map;
 import java.util.Objects;
 
 @Service
-public class CloudinaryServicioImpl implements CloudinaryServicio {
+public class CloudinaryServicioImpl  implements CloudinaryServicio {
+
 
     private final Cloudinary cloudinary;
 
-    public CloudinaryServicioImpl () {
+    public  CloudinaryServicioImpl() {
         Map<String, String> valuesMap = new HashMap<>();
         valuesMap.put("cloud_name", "");
         valuesMap.put("api_key", "");
         valuesMap.put("api_secret", "");
         cloudinary = new Cloudinary(valuesMap);
     }
-
     @Override
     public Map upload(MultipartFile multipartFile) throws IOException {
         File file = convert(multipartFile);
@@ -39,7 +39,6 @@ public class CloudinaryServicioImpl implements CloudinaryServicio {
         return cloudinary.uploader().destroy(id, ObjectUtils.emptyMap());
     }
 
-
     private File convert(MultipartFile multipartFile) throws IOException {
         File file = new File(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         FileOutputStream fo = new FileOutputStream(file);
@@ -47,6 +46,4 @@ public class CloudinaryServicioImpl implements CloudinaryServicio {
         fo.close();
         return file;
     }
-
-
 }
