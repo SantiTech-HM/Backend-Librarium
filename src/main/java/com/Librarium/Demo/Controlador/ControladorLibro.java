@@ -22,7 +22,7 @@ public class ControladorLibro {
     ServicioLibroImpl servicioLibroImpl;
 
     @PostMapping
-    public ResponseEntity<Libro> saveLibro(@RequestPart("book") Libro libro, @RequestPart("file")MultipartFile file) {
+    public ResponseEntity<Libro> saveLibro(@RequestPart("libro") Libro libro, @RequestPart("file")MultipartFile file) {
         try {
             Libro savedLibro = servicioLibroImpl.saveLibro(libro, file);
             return new ResponseEntity<>(savedLibro, HttpStatus.OK);
